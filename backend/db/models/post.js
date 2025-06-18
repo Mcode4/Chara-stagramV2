@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Post.belongsToMany(models.User,{foreignKey:'user_id'})
     }
   }
   Post.init({
-    body: DataTypes.STRING,
-    user_id: DataTypes.INTEGER,
+    body: DataTypes.STRING(250),
+    user_id: {
+      type: DataTypes.INTEGER,
+      unique: true
+    },
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {

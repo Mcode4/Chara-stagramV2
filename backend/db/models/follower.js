@@ -11,11 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Follower.hasMany(models.Users,{foreignKey:'id'})
+      Follower.belongsTo(models.User,{foreignKey:'user_id'})
     }
   }
   Follower.init({
-    user_id: DataTypes.INTEGER,
-    follower_id: DataTypes.INTEGER
+    user_id: {
+      type: DataTypes.INTEGER,
+      unique: true
+    },
+    follower_id: {
+      type: DataTypes.INTEGER,
+      unique: true
+    },
   }, {
     sequelize,
     modelName: 'Follower',

@@ -11,15 +11,32 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Post,{foreignKey:'user_id'})
+      User.hasMany(models.Follower,{foreignKey:'user_id'})
+      User.belongsToMany(models.Follower,{foreignKey:'id'})
     }
   }
   User.init({
-    name: DataTypes.STRING,
-    username: DataTypes.STRING,
-    bio: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING(25),
+      allowNull: false
+    },
+    username: {
+      type: DataTypes.STRING(25),
+      allowNull: false,
+      unique: true
+    },
+    bio: DataTypes.STRING(125),
     image: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    password: DataTypes.STRING(25),
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
