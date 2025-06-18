@@ -18,10 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     body: DataTypes.STRING(250),
     user_id: {
       type: DataTypes.INTEGER,
-      unique: true
+      allowNull: false
     },
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Post',

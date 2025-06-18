@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   Follower.init({
     user_id: {
       type: DataTypes.INTEGER,
-      unique: true
+      allowNull: false
     },
     follower_id: {
       type: DataTypes.INTEGER,
-      unique: true
+      allowNull: false
     },
   }, {
     sequelize,
