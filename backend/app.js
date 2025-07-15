@@ -1,11 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import routes from 'routes';
-import dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors');
+const routes = require('./routes/index.js')
+const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 9998;
+const port = process.env.PORT || 9999;
 
 if(process.env.NODE_ENV === 'production'){
     app.use(cors());
